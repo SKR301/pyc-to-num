@@ -1,4 +1,3 @@
-from unicodedata import digit
 import cv2
 import numpy as np
 
@@ -33,7 +32,7 @@ if __name__ == "__main__":
     for a in range(0, img.shape[0], 10):
         row = []
         for b in range(0, img.shape[1], 8):
-            if a > 501 or b > 64:
+            if a > 501 or b > 503:
                 break
             sum = calcPixelSum(a,b)
             dig = closestDig(sum)
@@ -42,4 +41,7 @@ if __name__ == "__main__":
         numBox.append(row)
 
 
-    
+    for a in range(len(numBox)):
+        for b in range(len(numBox[a])):
+            print(numBox[a][b], end="")
+        print()
