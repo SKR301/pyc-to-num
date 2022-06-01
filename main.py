@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 
+imgHeight, imgWidth = 512, 512
+maskHeight, maskWidth = 10, 8
+
 img = cv2.imread('img.png', 0)
 img = cv2.bitwise_not(img)
 
@@ -10,8 +13,8 @@ img = np.divide(img, 255)
 
 def calcPixelSum(x,y):
     sum = 0
-    for a in range(x, x+10):
-        for b in range(y, y+8):
+    for a in range(x, x + maskHeight):
+        for b in range(y, y + maskWidth):
             sum += img[a][b]
     
     return sum
@@ -29,10 +32,10 @@ def closestDig(num):
 if __name__ == "__main__":
 
     numBox = []
-    for a in range(0, img.shape[0], 10):
+    for a in range(0, img.shape[0], maskHeight):
         row = []
-        for b in range(0, img.shape[1], 8):
-            if a > 501 or b > 503:
+        for b in range(0, img.shape[1], maskWidth):
+            if a > (imgHeight - maskHeight - 1) or b > (imgWidth - maskWidth - 1):
                 break
             sum = calcPixelSum(a,b)
             dig = closestDig(sum)
