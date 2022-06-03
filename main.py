@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 
-maskHeight, maskWidth = 8, 6
+maskHeight, maskWidth = 12, 6
 
-img = cv2.imread('path/to/image', 0)         #image location [input]
+img = cv2.imread('img.png', 0)         #image location [input]
 imgHeight, imgWidth = img.shape
 img = cv2.bitwise_not(img)
 
