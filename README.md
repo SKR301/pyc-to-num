@@ -10,11 +10,11 @@ A fun project working with images to convert them into similar looking numerical
 1. Install all required dependencies. <br>
   `pip install -r requirements.txt `<br><br>
 3. Edit **main.py** to load the image. <br>
-  ![image](https://user-images.githubusercontent.com/47807051/171663332-95b5eb91-29a3-40d7-bcaf-905b1e049a9e.png)<br><br>
+  ![image](https://user-images.githubusercontent.com/47807051/172016946-3f602ba3-ac9d-453c-9acf-2bd1700ecf7e.png)<br><br>
 3. Execute the script. <br>
   `python main.py`<br><br>
 
 ## Example
 ![input](https://user-images.githubusercontent.com/47807051/171663548-415c4f5e-3397-4309-9995-07dc292aed2c.png)
-&nbsp;&nbsp;&nbsp;
-![50%](https://user-images.githubusercontent.com/47807051/171660975-d52815dd-0e10-4106-b5a2-14c73084e601.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![image](https://user-images.githubusercontent.com/47807051/172017113-6da177e8-78e0-4ae8-b765-5665c9dbe009.png)
