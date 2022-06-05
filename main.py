@@ -50,7 +50,7 @@ def getSize(txt):
     testDraw = ImageDraw.Draw(testImg)
     return testDraw.textsize(txt)
 
-# saves output text to image
+# show/save output text to image
 def asImg(text, savePath):
     colorText = "black"
     colorBackground = "white"
@@ -59,31 +59,27 @@ def asImg(text, savePath):
     d = ImageDraw.Draw(img)
     d.text((2, 2), text, fill=colorText)
     d.rectangle((0, 0, width+2, height))
-    
-    img.save(savePath)
+    img.show()
+    # img.save(savePath)    uncomment it to store it
 
 if __name__ == "__main__":
-    numBox = []
-    for a in range(0, imgHeight, maskHeight):
+    output = ''
+    for a in range(0, imgHeight - maskHeight, maskHeight):
         row = []
-        for b in range(0, imgWidth, maskWidth):
+        for b in range(0, imgWidth - maskWidth, maskWidth):
             if a > (imgHeight - maskHeight - 1) or b > (imgWidth - maskWidth - 1):
                 break
             sum = calcPixelSum(a,b)
             dig = closestDig(sum)
             row.append(dig)
-        numBox.append(row)
-
-    output = ''
-    for a in range(len(numBox) - 1):
-        for b in range(len(numBox[a])):
-            output += str(numBox[a][b])
+            output += str(dig)
         output += '\n'
 
+    # generate output
     if outputType == '-t':
         print(output)           
     elif outputType == '-i':
-        asImg(output, 'outputImage.png')
+        asImg(output, 'imgOutput.png')
     else:
         print('Invalid outputType. Please use -i for image or -t for text')
 
