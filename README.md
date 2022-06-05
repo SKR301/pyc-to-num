@@ -5,12 +5,14 @@ A fun project working with images to convert them into similar looking numerical
 - python v3.7.9
 - opencv-python
 - numpy
+- Pillow
 
 ## HowTo
 1. Install all required dependencies. <br>
   `pip install -r requirements.txt `<br>
 2. Execute the script. <br>
-  `python main.py ./relative-path/to/img`<br>
+  `python main.py ./relative-path/to/img -t`: output as text<br>
+  `python main.py ./relative-path/to/img -i`: output as image<br>
 
 ## Example
 ![input](https://user-images.githubusercontent.com/47807051/171663548-415c4f5e-3397-4309-9995-07dc292aed2c.png)

@@ -1,3 +1,4 @@
 opencv-python
 numpy
-sys
+# sys [should be pre-installed]
+Pillow
