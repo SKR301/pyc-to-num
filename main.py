@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import sys
+from PIL import Image, ImageDraw, ImageFont
 
 maskHeight, maskWidth = 12, 6
 
@@ -31,8 +32,23 @@ def closestDig(num):
     
     return dig
 
-if __name__ == "__main__":
+def getSize(txt):
+    testImg = Image.new('RGB', (1, 1))
+    testDraw = ImageDraw.Draw(testImg)
+    return testDraw.textsize(txt)
 
+def asImg(text):
+    colorText = "black"
+    colorBackground = "white"
+    width, height = getSize(text)
+    img = Image.new('RGB', (width+4, height+4), colorBackground)
+    d = ImageDraw.Draw(img)
+    d.text((2, 2), text, fill=colorText)
+    d.rectangle((0, 0, width+2, height-2))
+    
+    img.save("D:/Projects/pyc-to-num/image.png")
+
+if __name__ == "__main__":
     numBox = []
     for a in range(0, imgHeight, maskHeight):
         row = []
@@ -51,4 +67,8 @@ if __name__ == "__main__":
             output += str(numBox[a][b])
         output += '\n'
 
-    print(output)           # get the output here [output]
+    # print(output)           # get the output here [output]
+
+    asImg(output)
+
+    
