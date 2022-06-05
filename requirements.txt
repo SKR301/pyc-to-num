@@ -1,4 +1,4 @@
 opencv-python
 numpy
-sys
-matplotlib
+# sys [should be pre-installed]
+Pillow
