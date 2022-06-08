@@ -5,6 +5,10 @@ from PIL import Image, ImageDraw
 
 maskHeight, maskWidth = 12, 6
 
+
+density="$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'."
+length = len(density)
+
 try:
     imgPath = sys.argv[1]       # input from 1st argument of cli
     outputType = sys.argv[2]    # type of output -t or -i
@@ -35,6 +39,7 @@ def calcPixelSum(x,y):
 
 # find the digit that have similar no of pixel as in the masked area
 def closestDig(num):
+    return density[int(num*(length-1)/72)]
     temp = abs(num - digitDen[0])
     dig = 0
     for a in range(1, len(digitDen)):
@@ -61,6 +66,7 @@ def asImg(text, savePath):
     d.rectangle((0, 0, width+2, height))
     img.show()
     # img.save(savePath)    uncomment it to store it
+    # make it user friendly not programmer friendly
 
 if __name__ == "__main__":
     output = ''
