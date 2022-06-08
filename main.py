@@ -40,7 +40,7 @@ def calcPixelSum(x,y):
 
 # find the digit that have similar no of pixel as in the masked area
 def closestDig(num):
-    return density[int(num*length/100)]
+    return density[int(num*(length-1)/72)]
     temp = abs(num - digitDen[0])
     dig = 0
     for a in range(1, len(digitDen)):
