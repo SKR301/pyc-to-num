@@ -12,6 +12,7 @@ length = len(density)
 try:
     imgPath = sys.argv[1]       # input from 1st argument of cli
     outputType = sys.argv[2]    # type of output -t or -i
+    fillType=sys.argv[3]        # -n for number -c for characters
 except:
     print('INVALID INPUT TYPE!!!\n')
     print('python main.py [relative-image-location] [output type]')
@@ -39,7 +40,8 @@ def calcPixelSum(x,y):
 
 # find the digit that have similar no of pixel as in the masked area
 def closestDig(num):
-    return density[int(num*(length-1)/72)]
+    if fillType=='-c'
+        return density[int(num*(length-1)/72)]
     temp = abs(num - digitDen[0])
     dig = 0
     for a in range(1, len(digitDen)):
@@ -70,6 +72,8 @@ def asImg(text, savePath):
 
 if __name__ == "__main__":
     output = ''
+    
+    
     for a in range(0, imgHeight - maskHeight, maskHeight):
         row = []
         for b in range(0, imgWidth - maskWidth, maskWidth):
@@ -86,6 +90,7 @@ if __name__ == "__main__":
         print(output)           
     elif outputType == '-i':
         asImg(output, 'imgOutput.png')
+        
     else:
         print('Invalid outputType. Please use -i for image or -t for text')
 
