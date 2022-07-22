@@ -8,11 +8,16 @@ maskHeight, maskWidth = 12, 6
 try:
     imgPath = sys.argv[1]       # input from 1st argument of cli
     outputType = sys.argv[2]    # type of output -t or -i
+    colMode = ''
+    if outputType == '-i':
+        colMode = sys.argv[3]    # type of output -l or -d
 except:
     print('INVALID INPUT TYPE!!!\n')
-    print('python main.py [relative-image-location] [output type]')
+    print('python main.py [relative-image-location] [output type] [color mode]')
     print('\noutput type =>\t-t for text output')
     print('\t\t-i for image output')
+    print('\ncolor mode =>\t-l for light mode')
+    print('\t\t-d for dark mode')
     print('\n\nEg:\n   python main.py ./img -t')
     print('   python main.py ./img -i')
     exit()
@@ -51,9 +56,14 @@ def getSize(txt):
     return testDraw.textsize(txt)
 
 # show/save output text to image
-def asImg(text, savePath):
+def asImg(text, colMode, savePath):
     colorText = "black"
     colorBackground = "white"
+    
+    if colMode == '-d':
+        colorText = "white"
+        colorBackground = "black"
+
     width, height = getSize(text)
     img = Image.new('RGB', (width+4, height+4), colorBackground)
     d = ImageDraw.Draw(img)
@@ -79,8 +89,6 @@ if __name__ == "__main__":
     if outputType == '-t':
         print(output)           
     elif outputType == '-i':
-        asImg(output, 'imgOutput.png')
+        asImg(output, colMode, 'imgOutput.png')
     else:
         print('Invalid outputType. Please use -i for image or -t for text')
-
-    
